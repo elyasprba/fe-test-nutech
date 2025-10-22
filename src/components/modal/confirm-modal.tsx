@@ -1,4 +1,5 @@
 import { Modal } from "antd";
+import Logo from "../../assets/image/Logo.png";
 
 interface ConfirmModalProps {
   open: boolean;
@@ -44,7 +45,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
       width={320}
     >
       <div className="flex flex-col gap-3 items-center justify-center py-7">
-        <img src="../src/assets/image/Logo.png" alt="logo" />
+        <img src={Logo} alt="logo" />
         <div className="text-center">
           <p className="text-md font-semibold">{title}</p>
           <p>

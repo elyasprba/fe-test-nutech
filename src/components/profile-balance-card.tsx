@@ -1,13 +1,32 @@
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
-import { useAppSelector } from "../utils/dispatch";
+import { useAppDispatch, useAppSelector } from "../utils/dispatch";
 import { useGetBalance } from "../api/balance";
 import { capitalize } from "../utils/capitalize";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useGetProfile } from "../api/profile";
+import { setProfile } from "../redux/auth-slice";
 
 export default function ProfileBalanceCard() {
   const { first_name, last_name, profile_image } = useAppSelector(
     (state) => state.auth
   );
+
+  const dispatch = useAppDispatch();
+
+  const { data: profileData } = useGetProfile();
+
+  useEffect(() => {
+    if (profileData) {
+      dispatch(
+        setProfile({
+          email: profileData?.email || "",
+          first_name: profileData?.first_name || "",
+          last_name: profileData?.last_name || "",
+          profile_image: profileData?.profile_image || "",
+        })
+      );
+    }
+  }, [profileData, dispatch]);
 
   const [showBalance, setShowBalance] = useState(false);
 

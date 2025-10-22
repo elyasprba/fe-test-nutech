@@ -5,6 +5,8 @@ import { usePostLogin } from "../../api/login";
 import { useMessageApi } from "../../context/MessageProvider";
 import { useAppDispatch } from "../../utils/dispatch";
 import { setToken } from "../../redux/auth-slice";
+import IllustrationLogin from "../../assets/image/Illustrasi-Login.png";
+import Logo from "../../assets/image/Logo.png";
 
 export type LoginFormValues = {
   email: string;
@@ -48,11 +50,7 @@ function Login() {
           >
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <img
-                  src="../src/assets/image/Logo.png"
-                  alt="Logo SIMS PPOB"
-                  className="w-8 h-8"
-                />
+                <img src={Logo} alt="Logo SIMS PPOB" className="w-8 h-8" />
                 <h2 className="text-2xl font-semibold">SIMS PPOB</h2>
               </div>
 
@@ -126,7 +124,7 @@ function Login() {
         <div
           className="flex-1 bg-cover bg-center"
           style={{
-            backgroundImage: "url('../src/assets/image/Illustrasi-Login.png')",
+            backgroundImage: `url(${IllustrationLogin})`,
           }}
         ></div>
       </div>
