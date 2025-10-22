@@ -4,6 +4,7 @@ import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "../utils/dispatch";
 import { clearToken } from "../redux/auth-slice";
 import { useNavigate, useLocation } from "react-router-dom";
+import Logo from "../assets/image/Logo.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -26,11 +27,7 @@ function Navbar() {
         className="flex items-center gap-3 cursor-pointer"
         onClick={() => navigate("/dashboard")}
       >
-        <img
-          src="../src/assets/image/Logo.png"
-          alt="Logo SIMS PPOB"
-          className="w-6 h-6"
-        />
+        <img src={Logo} alt="Logo SIMS PPOB" className="w-6 h-6" />
         <h2 className="text-xl font-bold">SIMS PPOB - Elyas Purba Prastiya</h2>
       </div>
 

@@ -3,6 +3,8 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { usePostRegister } from "../../api/register";
 import { useMessageApi } from "../../context/MessageProvider";
 import { useNavigate } from "react-router-dom";
+import IllustrationRegister from "../../assets/image/Illustrasi-Login.png";
+import Logo from "../../assets/image/Logo.png";
 
 export type RegisterFormValues = {
   email: string;
@@ -54,11 +56,7 @@ function Register() {
           >
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <img
-                  src="../src/assets/image/Logo.png"
-                  alt="Logo SIMS PPOB"
-                  className="w-8 h-8"
-                />
+                <img src={Logo} alt="Logo SIMS PPOB" className="w-8 h-8" />
                 <h2 className="text-2xl font-semibold">SIMS PPOB</h2>
               </div>
 
@@ -187,7 +185,7 @@ function Register() {
         <div
           className="flex-1 bg-cover bg-center"
           style={{
-            backgroundImage: "url('../src/assets/image/Illustrasi-Login.png')",
+            backgroundImage: `url(${IllustrationRegister})`,
           }}
         ></div>
       </div>
