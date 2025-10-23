@@ -23,6 +23,7 @@ import {
 import SuccessModal from "../../components/modal/success-modal";
 import ErrorModal from "../../components/modal/error-modal";
 import ProfileBalanceCard from "../../components/profile-balance-card";
+import { useMessageApi } from "../../context/MessageProvider";
 
 const { Content, Footer } = Layout;
 
@@ -65,6 +66,8 @@ function Transaction() {
 
   const allTransactions = data?.pages?.flatMap((page) => page.records) ?? [];
 
+  const message = useMessageApi();
+
   const handleSelectService = (service: ServiceItem) => {
     setSelectedService(service);
     setAmount(service.service_tariff);
@@ -79,6 +82,7 @@ function Transaction() {
       onSuccess: () => {
         setIsModalOpen(false);
         setIsSuccessModalOpen(true);
+        setSelectedService(null);
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onError: (data: any) => {
@@ -210,7 +214,15 @@ function Transaction() {
                                     backgroundColor: "#F4271A",
                                     color: "#FFFFFF",
                                   }}
-                                  onClick={() => setIsModalOpen(true)}
+                                  onClick={() => {
+                                    if (!selectedService) {
+                                      message.warning(
+                                        "Pilih layanan terlebih dahulu!"
+                                      );
+                                      return;
+                                    }
+                                    setIsModalOpen(true);
+                                  }}
                                 >
                                   Bayar
                                 </Button>
