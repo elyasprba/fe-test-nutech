@@ -88,6 +88,8 @@ function Profile() {
     setPreview(imageUrl);
     setSelectedFile(file);
     setIsEdit(true);
+
+    e.target.value = "";
   };
 
   return (
