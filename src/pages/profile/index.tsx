@@ -45,7 +45,8 @@ function Profile() {
   const [preview, setPreview] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  const { mutate: updateProfile } = usePatchProfile();
+  const { mutate: updateProfile, isPending: isUpdatePending } =
+    usePatchProfile();
   const { mutate: updateImage, isPending } = useUpdateProfileImage();
 
   const onFinish = async () => {
@@ -220,6 +221,7 @@ function Profile() {
                     backgroundColor: "#F4271A",
                   }}
                   onClick={onFinish}
+                  loading={isPending || isUpdatePending}
                 >
                   Simpan
                 </Button>
